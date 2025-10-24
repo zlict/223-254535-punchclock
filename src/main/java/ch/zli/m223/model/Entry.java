@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 public class Entry {
@@ -21,6 +22,9 @@ public class Entry {
 
   @ManyToOne
   private Category category;
+
+  @ManyToMany
+  private Set<Tag> tags;
 
   public Long getId() {
     return id;
@@ -53,6 +57,16 @@ public class Entry {
   public void setCategory(Category category) {
     this.category = category;
   }
+
+  public Set<Tag> getTags() {
+    return tags;
+  }
+
+  public void setTags(Set<Tag> tags) {
+    this.tags = tags;
+  }
+
+  
 
   
 }
