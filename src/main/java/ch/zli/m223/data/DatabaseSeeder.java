@@ -43,7 +43,7 @@ public class DatabaseSeeder {
         tags.add(tag2);
 
         var tag3 = new Tag();
-        tag3.setTitle("Kundengespräche");
+        tag3.setTitle("Kundengespräch");
         entityManager.persist(tag3);
         tags.add(tag3);
     }

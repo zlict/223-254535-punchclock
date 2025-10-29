@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -20,9 +23,11 @@ public class Entry {
   @Column(nullable = false)
   private LocalDateTime checkOut;
 
+  @JsonIgnoreProperties("entries")
   @ManyToOne
   private Category category;
 
+  @JsonIgnoreProperties("entries")
   @ManyToMany
   private Set<Tag> tags;
 
