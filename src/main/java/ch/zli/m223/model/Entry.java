@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDateTime;
@@ -22,6 +21,9 @@ public class Entry {
 
   @Column(nullable = false)
   private LocalDateTime checkOut;
+
+  @Column(length = 2000)
+  private String description;
 
   @JsonIgnoreProperties("entries")
   @ManyToOne
@@ -71,7 +73,11 @@ public class Entry {
     this.tags = tags;
   }
 
-  
+  public String getDescription() {
+    return description;
+  }
 
-  
+  public void setDescription(String description) {
+    this.description = description;
+  }
 }

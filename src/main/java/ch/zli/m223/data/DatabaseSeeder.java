@@ -70,6 +70,7 @@ public class DatabaseSeeder {
         entry1.setCheckIn(LocalDateTime.now().minusDays(2).minusHours(2));
         entry1.setCheckOut(LocalDateTime.now().minusDays(2));
         entry1.setCategory(categories.getFirst());
+        entry1.setDescription("Heute habe ich wie wild in der Berufsschule programmiert!");
         var entry1tags = new HashSet<Tag>();
         entry1tags.add(tags.get(1));
         entry1.setTags(entry1tags);
@@ -79,6 +80,7 @@ public class DatabaseSeeder {
         entry2.setCheckIn(LocalDateTime.now().minusDays(1).minusHours(2));
         entry2.setCheckOut(LocalDateTime.now().minusDays(1));
         entry2.setCategory(categories.get(1));
+        entry2.setDescription("Auch im ÜK habe ich wie wild gearbeitet.");
         var entry2tags = new HashSet<Tag>();
         entry2tags.add(tags.get(1));
         entry2.setTags(entry2tags);
@@ -87,7 +89,8 @@ public class DatabaseSeeder {
         var entry3 = new Entry();
         entry3.setCheckIn(LocalDateTime.now().minusHours(2));
         entry3.setCheckOut(LocalDateTime.now());
-        entry3.setCategory(categories.get(1));
+        entry3.setCategory(categories.get(2));
+        entry3.setDescription("Da ich die ganze Zeit am Handy war, hat mich mein Chef damit bestraft, dass ich nun auf dem Handy programmieren muss.");
         var entry3tags = new HashSet<Tag>();
         entry3tags.add(tags.get(1));
         entry3.setTags(entry3tags);
