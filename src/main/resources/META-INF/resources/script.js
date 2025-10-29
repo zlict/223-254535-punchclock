@@ -38,11 +38,35 @@ const indexEntries = () => {
     renderEntries();
 };
 
+const deleteEntry = (id) => {
+    fetch(`${URL}/entries/${id}`, {
+        method: 'DELETE'
+    }).then((result) => {
+        if (result.ok) {
+            entries = entries.filter((e) => e.id !== id);
+            renderEntries();
+        }
+    })
+}
+
 const createCell = (text) => {
     const cell = document.createElement('td');
     cell.innerText = text;
     return cell;
 };
+
+const createActions = (entry) => {
+    const cell = document.createElement('td');
+
+    const deleteButton = document.createElement('button');
+    deleteButton.innerText = "Delete";
+    deleteButton.addEventListener("click", () => {
+        deleteEntry(entry.id);
+    });
+    cell.appendChild(deleteButton);
+
+    return cell;
+}
 
 const renderEntries = () => {
     const display = document.querySelector('#entryDisplay');
@@ -52,6 +76,7 @@ const renderEntries = () => {
         row.appendChild(createCell(entry.id));
         row.appendChild(createCell(new Date(entry.checkIn).toLocaleString()));
         row.appendChild(createCell(new Date(entry.checkOut).toLocaleString()));
+        row.appendChild(createActions(entry));
         display.appendChild(row);
     });
 };
