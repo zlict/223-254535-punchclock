@@ -12,9 +12,11 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+import org.jboss.resteasy.reactive.RestResponse;
 
 import ch.zli.m223.model.Entry;
 import ch.zli.m223.service.EntryService;
@@ -37,8 +39,9 @@ public class EntryController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new entry.", description = "Creates a new entry and returns the newly added entry.")
-    public Entry create(Entry entry) {
-        return entryService.createEntry(entry);
+    public Response create(Entry entry) {
+        var newEntry = entryService.createEntry(entry);
+        return Response.status(Response.Status.CREATED).entity(newEntry).build();
     }
 
     @PUT
