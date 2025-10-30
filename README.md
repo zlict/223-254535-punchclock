@@ -30,3 +30,14 @@ Die Daten werden in einer PostgreSQL-Datenbank gespeichert. In der Entwicklungsu
 ## Automatische Tests
 
 Die automatischen Tests können mit `./mvnw quarkus:test` ausgeführt werden. Für die automatischen Tests wird nicht die PostgreSQL-Datenbank verwendet, sondern eine H2-Datenbank, welche sich im Arbeitsspeicher während der Ausführung befindet.
+
+### Tests in VSCode ausführen
+
+Leider gibt es einen Fehler um alle Tests einer Klasse auszuführen. Der Fehler scheint mit einer inkompatiblen Version von JUnit in der `vscode-java-test`-Extension zu entstehen. Es ist möglich JUnit manuell zu aktualisieren:
+
+```bash
+cd /home/vscode/.vscode-server/extensions/vscjava.vscode-java-test-0.43.1/server
+wget https://repo1.maven.org/maven2/org/eclipse/jdt/org.eclipse.jdt.junit5.runtime/1.1.400/org.eclipse.jdt.junit5.runtime-1.1.400.jar
+rm org.eclipse.jdt.junit5.runtime_1.1.300.v20231214-1952.jar
+mv org.eclipse.jdt.junit5.runtime-1.1.400.jar org.eclipse.jdt.junit5.runtime_1.1.300.v20231214-1952.jar
+```
