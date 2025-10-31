@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import ch.zli.m223.model.ApplicationUser;
 import ch.zli.m223.model.Category;
 import ch.zli.m223.model.Entry;
 import ch.zli.m223.model.Tag;
@@ -29,6 +30,7 @@ public class DatabaseSeeder {
         this.createTags();
         this.createCategories();
         this.createEntries();
+        this.createUsers();
     }
 
     private void createTags() {
@@ -95,5 +97,14 @@ public class DatabaseSeeder {
         entry3tags.add(tags.get(1));
         entry3.setTags(entry3tags);
         entityManager.persist(entry3);
+    }
+
+    private void createUsers() {
+        var user1 = new ApplicationUser();
+        user1.setForename("Robin");
+        user1.setSurname("Bühler");
+        user1.setPassword("zli123");
+        user1.setUsername("robin");
+        entityManager.persist(user1);
     }
 }

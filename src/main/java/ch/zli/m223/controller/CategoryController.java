@@ -2,6 +2,7 @@ package ch.zli.m223.controller;
 
 import java.util.List;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -21,6 +22,7 @@ import ch.zli.m223.service.CategoryService;
 
 @Path("/categories")
 @Tag(name = "Categories", description = "Handling of categories")
+@RolesAllowed({"User", "Admin"})
 public class CategoryController {
 
     @Inject
